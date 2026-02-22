@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
+import { ParallaxImage } from '@/components/parallax-image';
+
 export default function BentoGrid() {
   return (
     <main className="min-h-screen p-4 md:p-8 lg:p-12 max-w-[1600px] mx-auto space-y-6">
@@ -39,22 +41,20 @@ export default function BentoGrid() {
           transition={{ duration: 0.5 }}
           className="col-span-1 md:col-span-6 lg:col-span-5 relative group overflow-hidden rounded-3xl bg-white shadow-sm hover:shadow-md transition-all"
         >
-          <div className="absolute inset-0">
-            <Image 
-              src="https://picsum.photos/seed/fashion/800/600" 
-              alt="Fashion" 
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-          </div>
-          <div className="absolute top-6 left-6">
+          <ParallaxImage 
+            src="https://picsum.photos/seed/fashion/800/600" 
+            alt="Fashion" 
+            className="transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+          
+          <div className="absolute top-6 left-6 z-10">
             <div className="bg-[#EDF259] text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg flex items-center gap-2">
               <span>Total Sales</span>
               <span className="text-lg">$4.7K</span>
             </div>
           </div>
-          <div className="absolute bottom-6 left-6">
+          <div className="absolute bottom-6 left-6 z-10">
              <button className="bg-white text-black px-5 py-2.5 rounded-full font-medium text-sm shadow-lg flex items-center gap-2 hover:bg-stone-50 transition-colors">
                <Heart className="w-4 h-4 text-red-500 fill-red-500" />
                Love it! Going to try it out
@@ -175,11 +175,15 @@ export default function BentoGrid() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="col-span-1 md:col-span-4 lg:col-span-3 bg-white rounded-3xl p-4 shadow-sm flex flex-col gap-4"
         >
-          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-100">
-             <Image src="https://picsum.photos/seed/model2/600/800" alt="Product" fill className="object-cover" />
+          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-100 group">
+             <ParallaxImage 
+               src="https://picsum.photos/seed/model2/600/800" 
+               alt="Product" 
+               className="transition-transform duration-700 group-hover:scale-105"
+             />
              
              {/* Floating UI Elements on Image */}
-             <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
+             <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
                <div className="bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold shadow-sm">
                  2:01
                </div>
@@ -188,7 +192,7 @@ export default function BentoGrid() {
                </div>
              </div>
 
-             <div className="absolute bottom-4 left-4 right-4 space-y-2">
+             <div className="absolute bottom-4 left-4 right-4 space-y-2 z-10">
                <div className="bg-white/90 backdrop-blur p-2 rounded-xl shadow-lg flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-green-500 flex items-center justify-center">
                     <ArrowRight className="w-3 h-3 text-white -rotate-45" />
